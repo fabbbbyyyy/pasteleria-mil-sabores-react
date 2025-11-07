@@ -1,4 +1,3 @@
-javascript
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:9090/api/user';
@@ -23,6 +22,7 @@ class UserService {
     deleteUser(id) {
         return axios.delete(`${BASE_URL}/${id}`);
     }
+
 }
 
 export default new UserService();
