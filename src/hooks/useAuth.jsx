@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Función para registrar usuario
-  const register = async (name, email, password, numero, paymentMethodId) => {
+  const register = async (name, email, password, number, address, paymentMethodId) => {
     try {
       // Validaciones
       if (!name || !email || !password) {
@@ -128,21 +128,27 @@ export const AuthProvider = ({ children }) => {
         name,
         email,
         password,
-        numero,
+        number,
+        address,
         paymentMethodId
       });
 
       // Extraer token y datos del usuario de la respuesta
-      const { token: authToken, email: userEmail, name: userName } = response.data;
+      const { token: authToken, email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod } = response.data;
 
       // Crear objeto de usuario
       const userData = {
         email: userEmail,
-        name: userName
+        name: userName,
+        address: userAddress,
+        number: userNumber,
+        paymentMethod: paymentMethod?.name || 'No especificado'
       };
 
+      console.log('Datos del usuario registrado:', userData);
+
       // Guardar en estado
-      setToken(authToken);
+      setToken(authToken);  
       setUser(userData);
       setIsAuthenticated(true);
 

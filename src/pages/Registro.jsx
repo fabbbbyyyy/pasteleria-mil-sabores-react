@@ -10,6 +10,7 @@ const Registro = () => {
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
   const [numero, setNumero] = useState("");
+  const [address, setAddress] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [error, setError] = useState("");
@@ -48,7 +49,7 @@ const Registro = () => {
     setIsSubmitting(true);
 
     // Usar la función register de useAuth
-    const result = await register(name, mail, password, numero, parseInt(paymentMethod));
+    const result = await register(name, mail, password, numero, address, parseInt(paymentMethod));
 
     if (result.success) {
       setSuccessMessage("¡Cuenta creada exitosamente! Redirigiendo...");
@@ -124,6 +125,18 @@ const Registro = () => {
             value={numero}
             onChange={(e) => setNumero(e.target.value)}
             placeholder="Número de teléfono"
+          />
+        </div>
+
+        <div>
+          <strong>Dirección</strong>
+          <input
+            type="text"
+            name="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Dirección"
+            required
           />
         </div>
 
