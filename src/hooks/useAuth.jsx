@@ -69,13 +69,18 @@ export const AuthProvider = ({ children }) => {
       });
 
       // Extraer token y datos del usuario de la respuesta
-      const { token: authToken, email: userEmail, name: userName } = response.data;
+      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod, id: userId } = response.data;
 
       // Crear objeto de usuario
       const userData = {
         email: userEmail,
-        name: userName
+        name: userName,
+        address: userAddress,
+        number: userNumber,
+        paymentMethod: paymentMethod?.name || 'No especificado',
+        id: userId
       };
+       console.log('Datos del usuario Logeado:', userData);
 
       // Guardar en estado
       setToken(authToken);
@@ -134,7 +139,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       // Extraer token y datos del usuario de la respuesta
-      const { token: authToken, email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod } = response.data;
+      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod, id: userId } = response.data;
 
       // Crear objeto de usuario
       const userData = {
@@ -142,10 +147,10 @@ export const AuthProvider = ({ children }) => {
         name: userName,
         address: userAddress,
         number: userNumber,
-        paymentMethod: paymentMethod?.name || 'No especificado'
+        paymentMethod: paymentMethod?.name || 'No especificado',
+        id: userId
       };
-
-      console.log('Datos del usuario registrado:', userData);
+       console.log('Datos del usuario Registrado:', userData);
 
       // Guardar en estado
       setToken(authToken);  
