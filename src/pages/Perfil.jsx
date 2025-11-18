@@ -1,5 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { usePerfil } from "../hooks/usePerfil";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Perfil() {
   const {
@@ -11,6 +13,14 @@ export default function Perfil() {
     handleGuardar,
     setEditando,
   } = usePerfil();
+  
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <section id="centro">
@@ -101,7 +111,7 @@ export default function Perfil() {
               Editar Perfil
             </button>
           )}
-          <button className="btn-cta">Cerrar Sesión</button>
+          <button className="btn-cta" onClick={handleLogout}>Cerrar Sesión</button>
         </div>
       </main>
     </section>

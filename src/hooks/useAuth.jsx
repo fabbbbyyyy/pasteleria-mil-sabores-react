@@ -7,16 +7,42 @@ const AuthContext = createContext(null);
 // URL base de la API de autenticación
 const AUTH_URL = 'http://localhost:9090/api/auth';
 
-// Configurar interceptor de axios para agregar token a todas las peticiones
-axios.interceptors.request.use(
+// Crear instancia de axios para autenticación
+const authApi = axios.create({
+  baseURL: AUTH_URL,
+  timeout: 10000,
+});
+
+// Interceptor para agregar el token automáticamente a todas las requests
+authApi.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    config.headers['Content-Type'] = 'application/json';
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor para manejar errores de autenticación
+authApi.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response?.status === 401) {
+      // Token expirado o inválido
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      // Redirigir al login
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login';
+      }
+    }
     return Promise.reject(error);
   }
 );
@@ -63,7 +89,7 @@ export const AuthProvider = ({ children }) => {
       }
 
       // Realizar petición a la API
-      const response = await axios.post(`${AUTH_URL}/login`, {
+      const response = await authApi.post('/login', {
         email,
         password
       });
@@ -129,7 +155,7 @@ export const AuthProvider = ({ children }) => {
         };
       }
 
-      const response = await axios.post(`${AUTH_URL}/register`, {
+      const response = await authApi.post('/register', {
         name,
         email,
         password,
