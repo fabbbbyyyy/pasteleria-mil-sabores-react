@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:9090/api/product';
+const BASE_URL = 'http://Opasteleria-api-env.eba-ctypcpd8.us-east-1.elasticbeanstalk.com/api/product';
 
 class ProductService {
     getAllProducts() { 

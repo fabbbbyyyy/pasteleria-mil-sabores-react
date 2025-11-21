@@ -5,7 +5,7 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 // URL base de la API de autenticación
-const AUTH_URL = 'http://localhost:9090/api/auth';
+const AUTH_URL = 'http://Opasteleria-api-env.eba-ctypcpd8.us-east-1.elasticbeanstalk.com/api/auth';
 
 // Crear instancia de axios para autenticación
 const authApi = axios.create({

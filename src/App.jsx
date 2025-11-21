@@ -36,10 +36,10 @@ function App() {
         <Route path="/historia" element={<Historia />} />
         <Route path="/registro" element={<Registro />} />        
         <Route path="/login" element={<Login />} />
+        <Route path="/carrito" element={<Carrito />} />
         
         {/* Rutas protegidas - requieren autenticación */}
         <Route path="/perfil" element={<PrivateRoute><Perfil /></PrivateRoute>} />
-        <Route path="/carrito" element={<PrivateRoute><Carrito /></PrivateRoute>} />
         <Route path="/productform" element={<PrivateRoute><ProductForm /></PrivateRoute>} />
         <Route path="/productlist" element={<PrivateRoute><ProductList /></PrivateRoute>} />
       </Routes>
