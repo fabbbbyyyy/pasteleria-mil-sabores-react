@@ -3,6 +3,13 @@ import React, { useState } from 'react';
 const ProductoCard = ({ producto, onAgregarAlCarrito }) => {
   const [cantidad, setCantidad] = useState(1);
 
+  // Mapeo de propiedades según la API
+  const id = producto.id;
+  const nombre = producto.name;
+  const precio = producto.price;
+  const descripcion = producto.description;
+  const imagen = producto.imagen || '/datasets-tortas/default.jpg';
+
   const cambiarCantidad = (incremento) => {
     const nuevaCantidad = cantidad + incremento;
     if (nuevaCantidad >= 1 && nuevaCantidad <= 10) {
@@ -11,32 +18,22 @@ const ProductoCard = ({ producto, onAgregarAlCarrito }) => {
   };
 
   const handleAgregar = () => {
-    console.log('🖱️ Botón clickeado - Producto:', producto.nombre, 'Cantidad:', cantidad);
-    
-    // Verifica que onAgregarAlCarrito sea una función
     if (typeof onAgregarAlCarrito === 'function') {
       onAgregarAlCarrito(producto, cantidad);
-      
-      // Resetear cantidad después de agregar (opcional)
       setCantidad(1);
-      
-      // Feedback visual (opcional)
-      alert(`✅ ${cantidad} ${producto.nombre} agregado al carrito!`);
-    } else {
-      console.error('❌ onAgregarAlCarrito no es una función:', onAgregarAlCarrito);
     }
   };
 
   return (
-    <div className="producto-card" data-id={producto.id}>
+    <div className="producto-card" data-id={id}>
       <div className="producto-imagen">
-        <img src={producto.imagen} alt={producto.nombre} />
-        <div className="producto-badge">{producto.id}</div>
+        <img src={imagen} alt={nombre} />
+        <div className="producto-badge">{id}</div>
       </div>
       <div className="producto-info">
-        <h3>{producto.nombre}</h3>
-        <p className="producto-descripcion">{producto.descripcion}</p>
-        <div className="producto-precio">${producto.precio} CLP</div>
+        <h3>{nombre}</h3>
+        <p className="producto-descripcion">{descripcion}</p>
+        <div className="producto-precio">${precio} CLP</div>
         <div className="producto-acciones">
           <div className="cantidad-selector">
             <button className="cantidad-btn" onClick={() => cambiarCantidad(-1)}>-</button>

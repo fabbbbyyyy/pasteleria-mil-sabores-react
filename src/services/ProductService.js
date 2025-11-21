@@ -11,6 +11,10 @@ class ProductService {
         return axios.get(`${BASE_URL}/${id}`);
     }
 
+    getProductsByCategory(categoryId) { 
+        return axios.get(`${BASE_URL}/category/${categoryId}`);
+    }
+
     createProduct(product) { 
         return axios.post(BASE_URL, product);
     }

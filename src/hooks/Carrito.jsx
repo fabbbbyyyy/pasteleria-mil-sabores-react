@@ -119,7 +119,7 @@ export const CarritoProvider = ({ children }) => {
   // Calcular precio total del carrito
   const getTotalPrice = () => {
     return cart.reduce((total, item) => {
-      const price = parseFloat(item.precio) || 0;
+      const price = parseFloat(item.price || item.precio) || 0;
       const quantity = parseInt(item.quantity) || 0;
       return total + (price * quantity);
     }, 0);

@@ -40,7 +40,7 @@ const CarritoPage = () => {
           </div>
           <h2>Tu carrito está vacío</h2>
           <p>¡Descubre nuestros productos y encuentra algo especial!</p>
-          <Link to="/" className="btn-agregar">
+          <Link to="/catalogo" className="btn-agregar">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
             </svg>
@@ -58,16 +58,23 @@ const CarritoPage = () => {
         <h1>Carrito de Compras</h1>
         <div className='cart-content'>
       <div className="cart-items">
-          {cart.map(item => (
+          {cart.map(item => {
+            // Mapeo de propiedades para soportar tanto datos locales como de API
+            const nombre = item.name || item.nombre;
+            const descripcion = item.description || item.descripcion;
+            const precio = item.price || item.precio;
+            const imagen = item.imagen;
+
+            return (
             <div key={item.id} className="item">
               <div className="producto-imagen">
-                <img src={item.imagen} alt={item.nombre} />
+                <img src={imagen} alt={nombre} />
               </div>
               
               <div className="producto-info">
-                <h3>{item.nombre}</h3>
-                <p className="producto-descripcion">{item.descripcion}</p>
-                <div className="producto-precio">${item.precio?.toLocaleString('es-CL')} CLP c/u</div>
+                <h3>{nombre}</h3>
+                <p className="producto-descripcion">{descripcion}</p>
+                <div className="producto-precio">${precio?.toLocaleString('es-CL')} CLP c/u</div>
                 
                 <div className="producto-acciones">
                   <button 
@@ -109,11 +116,12 @@ const CarritoPage = () => {
                   </button>
                 </div>
                 <div className="producto-precio total-item">
-                  ${((item.precio || 0) * item.quantity).toLocaleString('es-CL')} CLP
+                  ${((item.price || item.precio || 0) * item.quantity).toLocaleString('es-CL')} CLP
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="carrito-resumen">
