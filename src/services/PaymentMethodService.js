@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PAYMENT_METHOD_URL = 'http://Opasteleria-api-env.eba-ctypcpd8.us-east-1.elasticbeanstalk.com/api/payment_method';
+const PAYMENT_METHOD_URL = 'http://localhost:8080/api/payment_method';
 
 class PaymentMethodService {
     getAllPaymentMethods() {

@@ -5,7 +5,7 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 // URL base de la API de autenticación
-const AUTH_URL = 'http://Opasteleria-api-env.eba-ctypcpd8.us-east-1.elasticbeanstalk.com/api/auth';
+const AUTH_URL = 'http://localhost:8080/api/auth';
 
 // Crear instancia de axios para autenticación
 const authApi = axios.create({
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       // Extraer token y datos del usuario de la respuesta
-      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod, id: userId } = response.data;
+      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod,roleId: roleId, id: userId } = response.data;
 
       // Crear objeto de usuario
       const userData = {
@@ -104,6 +104,7 @@ export const AuthProvider = ({ children }) => {
         address: userAddress,
         number: userNumber,
         paymentMethod: paymentMethod?.name || 'No especificado',
+        roleId: roleId,
         id: userId
       };
        console.log('Datos del usuario Logeado:', userData);
@@ -165,7 +166,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       // Extraer token y datos del usuario de la respuesta
-      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod, id: userId } = response.data;
+      const { token: authToken,email: userEmail, name: userName , address: userAddress, number: userNumber, paymentMethod,roleId: roleId, id: userId } = response.data;
 
       // Crear objeto de usuario
       const userData = {
@@ -174,6 +175,7 @@ export const AuthProvider = ({ children }) => {
         address: userAddress,
         number: userNumber,
         paymentMethod: paymentMethod?.name || 'No especificado',
+        roleId: roleId,
         id: userId
       };
        console.log('Datos del usuario Registrado:', userData);

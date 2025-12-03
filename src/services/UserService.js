@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://Opasteleria-api-env.eba-ctypcpd8.us-east-1.elasticbeanstalk.com/api/user';
+const BASE_URL = 'http://localhost:8080/api/user';
 
 // Crear instancia de axios
 const api = axios.create({
