@@ -2969,6 +2969,46 @@ a{
   color: #F8E8D8;
 }
 
+.badge-admin {
+  background-color: #8B4B3B;
+  color: #F8E8D8;
+}
+
+.badge-cliente {
+  background-color: #5FA777;
+  color: #F8E8D8;
+}
+
+/* Mensajes de estado */
+.cargando-mensaje,
+.sin-usuarios-mensaje,
+.error-mensaje {
+  background-color: #F8E8D8;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(139, 75, 59, 0.15);
+  margin-bottom: 2rem;
+}
+
+.error-mensaje {
+  background-color: #FFE8E8;
+  border-left: 4px solid #D4A574;
+}
+
+.error-mensaje p {
+  color: #8B4B3B;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+}
+
+.cargando-mensaje p,
+.sin-usuarios-mensaje p {
+  color: #6B453C;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1rem;
+}
+
 .usuarios-resumen {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -3014,7 +3054,6 @@ a{
   justify-content: center;
 }
 
-.btn-editar,
 .btn-eliminar {
   padding: 0.5rem 1rem;
   border-radius: 15px;
@@ -3024,20 +3063,6 @@ a{
   font-weight: 600;
   font-family: "Lato", sans-serif;
   transition: all 0.3s ease;
-}
-
-.btn-editar {
-  background-color: #6B5B4F;
-  color: #F8E8D8;
-}
-
-.btn-editar:hover {
-  background-color: #4A3B32;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 59, 50, 0.3);
-}
-
-.btn-eliminar {
   background-color: #D4A574;
   color: #6B453C;
 }

@@ -18,6 +18,7 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import { AuthProvider } from './hooks/useAuth';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
 import Usuarios from './pages/usuarios';
 
 
@@ -30,7 +31,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/usuarios" element={<Usuarios />} />
+        <Route path="/usuarios" element={<AdminRoute><Usuarios /></AdminRoute>} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/productos/:categoria" element={<ProductosPage />} />
         <Route path="/productos" element={<ProductosPage />} />

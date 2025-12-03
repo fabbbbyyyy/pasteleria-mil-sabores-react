@@ -16,6 +16,8 @@ api.interceptors.request.use(
             config.headers.Authorization = `Bearer ${token}`;
         }
         config.headers['Content-Type'] = 'application/json';
+        console.log('Token enviado:', token ? 'Sí' : 'No'); // Debug
+        console.log('Headers:', config.headers); // Debug
         return config;
     },
     (error) => {
