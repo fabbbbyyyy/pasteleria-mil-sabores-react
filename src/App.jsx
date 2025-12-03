@@ -18,6 +18,8 @@ import ProductForm from './components/ProductForm';
 import ProductList from './components/ProductList';
 import { AuthProvider } from './hooks/useAuth';
 import PrivateRoute from './components/PrivateRoute';
+import Usuarios from './pages/usuarios';
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/productos/:categoria" element={<ProductosPage />} />
         <Route path="/productos" element={<ProductosPage />} />

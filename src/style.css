@@ -2862,3 +2862,292 @@ a{
 
   
 }
+
+/* ===============================
+   PÁGINA DE USUARIOS
+   =============================== */
+
+#usuarios-header {
+  text-align: center;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #F8E8D8 0%, #F4E4E1 100%);
+  border-radius: 25px;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(139, 75, 59, 0.1);
+}
+
+#usuarios-header h1 {
+  font-family: "Pacifico", cursive;
+  color: #8B4B3B;
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#usuarios-header p {
+  font-family: "Lato", sans-serif;
+  color: #6B453C;
+  font-size: 1.1rem;
+}
+
+.usuarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.usuarios-tabla-wrapper {
+  background-color: #F8E8D8;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(139, 75, 59, 0.15);
+  overflow-x: auto;
+}
+
+.usuarios-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Lato", sans-serif;
+}
+
+.usuarios-tabla thead {
+  background: linear-gradient(135deg, #8B4B3B 0%, #6B3A2A 100%);
+  color: #F8E8D8;
+}
+
+.usuarios-tabla th {
+  padding: 1.2rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #A67C6A;
+}
+
+.usuarios-tabla tbody tr {
+  border-bottom: 1px solid #E8D5C4;
+  transition: all 0.3s ease;
+}
+
+.usuarios-tabla tbody tr:hover {
+  background-color: #F4E4E1;
+  box-shadow: inset 0 0 10px rgba(139, 75, 59, 0.1);
+}
+
+.usuarios-tabla td {
+  padding: 1rem 1.2rem;
+  color: #6B453C;
+  font-size: 0.95rem;
+}
+
+.usuarios-tabla td:first-child {
+  font-weight: 600;
+  color: #8B4B3B;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 80px;
+}
+
+.badge-activo {
+  background-color: #5FA777;
+  color: #F8E8D8;
+}
+
+.badge-inactivo {
+  background-color: #D4A574;
+  color: #6B453C;
+}
+
+.badge-pago {
+  background-color: #A67C6A;
+  color: #F8E8D8;
+}
+
+.usuarios-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.resumen-stat {
+  background-color: #F8E8D8;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(139, 75, 59, 0.15);
+  border: 2px solid #E8D5C4;
+  transition: all 0.3s ease;
+}
+
+.resumen-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(139, 75, 59, 0.25);
+}
+
+.stat-numero {
+  display: block;
+  font-family: "Pacifico", cursive;
+  font-size: 2.5rem;
+  color: #8B4B3B;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  display: block;
+  font-family: "Lato", sans-serif;
+  color: #6B453C;
+  font-size: 1rem;
+}
+
+/* Acciones en la tabla */
+.acciones-tabla {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #6B5B4F;
+  color: #F8E8D8;
+}
+
+.btn-editar:hover {
+  background-color: #4A3B32;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 59, 50, 0.3);
+}
+
+.btn-eliminar {
+  background-color: #D4A574;
+  color: #6B453C;
+}
+
+.btn-eliminar:hover {
+  background-color: #C19660;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(193, 150, 96, 0.3);
+}
+
+.btn-agregar-usuario {
+  background-color: #8B4B3B;
+  color: #F8E8D8;
+  padding: 1.2rem 2rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Lato", sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(139, 75, 59, 0.2);
+  white-space: nowrap;
+}
+
+.btn-agregar-usuario:hover {
+  background-color: #6B3A2A;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(139, 75, 59, 0.3);
+}
+
+/* Responsive para tabla de usuarios */
+@media (max-width: 991px) {
+  .usuarios-tabla-wrapper {
+    padding: 1.5rem;
+  }
+
+  .usuarios-tabla th {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .usuarios-tabla td {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  #usuarios-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .usuarios-tabla-wrapper {
+    overflow-x: auto;
+    padding: 1rem;
+  }
+
+  .usuarios-tabla {
+    min-width: 600px;
+  }
+
+  .usuarios-tabla th {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .usuarios-tabla td {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  #usuarios-header h1 {
+    font-size: 1.8rem;
+  }
+
+  #usuarios-header p {
+    font-size: 0.95rem;
+  }
+
+  .usuarios-resumen {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .resumen-stat {
+    padding: 1.5rem;
+  }
+
+  .stat-numero {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .acciones-tabla {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .btn-editar,
+  .btn-eliminar {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+
+  .btn-agregar-usuario {
+    width: 100%;
+  }
+}
